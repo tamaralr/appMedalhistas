@@ -1,0 +1,37 @@
+{
+  "name": "appmedalhistas",
+  "version": "1.0.0",
+  "description": "App oferece aos atletas um acervo com sua história, competições que participou, com suas respectivas posições, seus títulos e medalhas. Além disso, oferece uma agenda para marcar suas próximas competições e seus treinos. ",
+  "main": "server.js",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamaralr/appMedalhistas.git"
+  },
+  "keywords": [
+    "atletas",
+    "história",
+    "competições",
+    "posições",
+    "títulos",
+    "medalhas",
+    "treinos"
+  ],
+  "author": "Tamara de Lima Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamaralr/appMedalhistas/issues"
+  },
+  "homepage": "https://github.com/tamaralr/appMedalhistas#readme"
+}
