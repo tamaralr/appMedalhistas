@@ -1,5 +1,4 @@
 var express = require('express');
-var path = require('path');
 var load = require('consign')
 var bodyParser = require('body-parser');
 
@@ -15,7 +14,7 @@ module.exports = function() {
   // novos middlewares
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
-  app.use(express.static('./public'));
+  //app.use(express.static('./public'));
   //app.use(require('method-override')());
 
   load('models', {cwd: 'src'})

@@ -1,10 +1,9 @@
 // app/routes/home.js
-var controller = require('../controllers/home')();
+var controller = require('../controllers/teste')();
 
 var a = function(app) {
 	//console.log(app)
-
-	app.get('/index', controller.index);
+	app.get('/teste', controller.index);
 	app.get('/', controller.index);
 }
 
