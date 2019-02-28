@@ -13,6 +13,8 @@ module.exports = function() {
   app.set('views','./site/views');
   // novos middlewares
   app.use(bodyParser.json());
+
+  app
   app.use(bodyParser.urlencoded({extended: true}));
   //app.use(express.static('./public'));
   //app.use(require('method-override')());

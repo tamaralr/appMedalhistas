@@ -3,8 +3,7 @@ var a = function() {
 	var controller = {};
 	
 	controller.index = function(req, res) {
-		res.render('index');
-		res.render('teste');
+		res.render('index', {index: 'index'});
 	};	
 
 	return controller;

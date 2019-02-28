@@ -1,10 +1,118 @@
-<!doctype html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Bem-vindo</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+		<style>
+			table, th , td  {
+			  border: 1px solid grey;
+			  border-collapse: collapse;
+			  padding: 5px;
+			}
+			table tr:nth-child(odd) {
+			  background-color: #f1f1f1;
+			}
+			table tr:nth-child(even) {
+			  background-color: #ffffff;
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Bem-vindo ao Express</h1>
+	<body ng-controller="myCtrl" ng-app="myApp">
+		
+		<div>
+			<table>
+				<tr>
+					<td> <a href=<%=index %> > One Session Page </a> </td>
+					<td> <a href="persistence/index.html"> Persistence Page </a> </td>
+				</tr>
+			</table>
+		</div>
+
+
+
+		<div>
+			<h1> ONE PAGE ONE SESSION </h1>
+			<h2 ng-hide=!hide> SHOW LIST </h1>
+			<h2 ng-hide=hide> HIDE LIST </h1>
+
+			<form name="myForm">
+				Firstname: <input type="text" name="input1" ng-model="firstname" required>
+				Lastname: <input type="text" name="input2" ng-model="lastname" required>
+			</form>
+			<h2 ng-click="add()" > ADD USER </h1> 
+
+			<p>
+				<b>Total in dollar:</b>{{firstname}} {{lastname}}
+			</p>
+
+			<table ng-hide="hide_list">
+				<tr ng-repeat="x in allnames | orderBy : 'name'">
+					<td ng-click="init_edit($index)">EDIT</td>
+					<td>{{ $index + 1 }}</td>
+					<td>{{x.firstname}}</td>
+					<td>{{x.lastname}}</td>
+					<td ng-click="delete($index)">X</td>
+				</tr>
+			</table>
+
+			<form name="myFormEdit" ng-hide="edit_hide">
+				Firstname: <input type="text" name="input3" ng-model="firstnameEdit" required>
+				Lastname: <input type="text" name="input4" ng-model="lastnameEdit" required>
+				<h2 ng-click="edit()" > EDIT USER </h1> 
+			</form>
+			
+		</div>
+
+
+	<script>
+		var app = angular.module('myApp', ["ngRoute"]);
+
+		app.controller('myCtrl', function($scope)
+		{
+			$scope.firstname = "Default";
+			$scope.lastname = "Default";
+			$scope.firstnameEdit = "";
+			$scope.lastnameEdit = "";
+			$scope.allnames = [];
+			$scope.edit_hide = true;
+			$scope.edit_index = -1;
+			$scope.hide_list = false;
+			
+				$scope.add = function()
+				{
+					if ($scope.myForm.input1.$valid && $scope.myForm.input2.$valid){
+						$scope.allnames.push({firstname: $scope.firstname, 
+										      lastname: $scope.lastname});
+						$scope.firstname = "Default";
+						$scope.lastname = "Default";
+					}
+				};
+
+				$scope.delete = function(index)
+				{
+					$scope.allnames.splice(index,1);
+				};
+
+				$scope.init_edit = function(index)
+				{
+					$scope.edit_hide = false;
+					$scope.edit_index = index;
+				};
+
+				$scope.edit = function()
+				{
+					if ($scope.myFormEdit.input3.$valid && $scope.myFormEdit.input4.$valid)
+					{
+						$scope.allnames[$scope.edit_index] = {firstname: $scope.firstnameEdit,
+														  lastname: $scope.lastnameEdit};
+					    $scope.edit_hide = true;
+					    $scope.edit_index = -1;
+					    $scope.firstnameEdit = "";
+					    $scope.lastnameEdit = "";
+					}
+				};
+		});
+	</script>
 	</body>
+
+	
 </html>
