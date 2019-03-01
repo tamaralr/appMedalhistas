@@ -19,8 +19,8 @@ module.exports = function() {
   //app.use(express.static('./public'));
   //app.use(require('method-override')());
 
-  load('models', {cwd: 'src'})
-    .include('src')
+  load('models', {cwd: 'dist'})
+    .include('dist')
     .then('controllers')
     .then('routes')
     .into(app);
